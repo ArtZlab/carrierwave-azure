@@ -108,8 +108,8 @@ module CarrierWave
 
         def service_sas_token
           @service_sas_token ||= ::Azure::Storage::Common::Core::Auth::SharedAccessSignature.new(
-            @connection.storage_account_name,
-            @connection.storage_access_key
+            @uploader.azure_storage_account_name,
+            @uploader.azure_storage_access_key
           ).tap { |generator| return generator.generate_service_sas_token }
         end
       end
